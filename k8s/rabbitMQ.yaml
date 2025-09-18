@@ -4,7 +4,7 @@ metadata:
   name: rabbitmq
   namespace: retail
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: rabbitmq
@@ -31,7 +31,9 @@ spec:
   selector:
     app: rabbitmq
   ports:
-  - port: 5672
-    targetPort: 5672
-  - port: 15672
-    targetPort: 15672
+    - name: amqp
+      port: 5672
+      targetPort: 5672
+    - name: management
+      port: 15672
+      targetPort: 15672

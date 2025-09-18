@@ -4,7 +4,7 @@ metadata:
   name: cart
   namespace: retail
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: cart

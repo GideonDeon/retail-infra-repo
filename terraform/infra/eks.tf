@@ -22,6 +22,11 @@ module "eks" {
     vpc_id          = module.vpc.vpc_id
     subnet_ids      = module.vpc.private_subnets
 
+    endpoint_private_access = true
+    endpoint_public_access  = true
+    endpoint_public_access_cidrs = ["0.0.0.0/0"]
+    
+
   # EKS Managed Node Group(s)
   eks_managed_node_groups = {
     bedrock_cluster = {
@@ -38,6 +43,17 @@ module "eks" {
         }
     }
   }
+
+enable_cluster_creator_admin_permissions = true
+
+  access_entries = {
+    dev_readonly_user = {
+      principal_arn     = aws_iam_user.dev_readonly.arn
+      kubernetes_groups = ["view"]
+      username          = "dev-readonly"
+    }
+  }
+
 
   tags = var.tags
 }

@@ -74,15 +74,16 @@ configMap:
 
 app:
   persistence:
-    provider: in-memory
-    endpoint: ""
-    database: "catalog"
+    provider: mysql
+    endpoint: mysql:3306
+    database: catalog
 
     secret:
       create: true
-      name: catalog-db
+      name: mysql
       username: catalog
-      password: ""
+      password: bedrock
+
 
 mysql:
   create: false
