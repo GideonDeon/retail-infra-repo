@@ -26,7 +26,7 @@ metadata:
   name: ui
   namespace: retail
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: ui
   ports:

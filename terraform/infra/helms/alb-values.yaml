@@ -1,0 +1,10 @@
+clusterName: pr-bedrock_eks_deon   
+region: us-east-1                  
+vpcId: vpc-0c275c8dfba40f26e             
+
+serviceAccount:
+  create: false
+  name: aws-load-balancer-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::512740826318:role/AmazonEKSLoadBalancerControllerRole
